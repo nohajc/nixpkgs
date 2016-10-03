@@ -4591,6 +4591,23 @@ in
     libcCross = if crossSystem != null then libcCross else null;
   }));
 
+  gcc47 = lowPrio (wrapCC (callPackage ../development/compilers/gcc/4.7 {
+    inherit noSysDirs;
+    texinfo = texinfo4;
+
+    ppl = null;
+    cloogppl = null;
+
+    # PGO seems to speed up compilation by gcc by ~10%, see #445 discussion
+    #profiledCompiler = with stdenv; (!isSunOS && !isDarwin && (isi686 || isx86_64));
+
+    # When building `gcc.crossDrv' (a "Canadian cross", with host == target
+    # and host != build), `cross' must be null but the cross-libc must still
+    # be passed.
+    cross = null;
+    libcCross = if crossSystem != null then libcCross else null;
+  }));
+
   gcc48 = lowPrio (wrapCC (callPackage ../development/compilers/gcc/4.8 {
     inherit noSysDirs;
 
