@@ -1,3 +1,5 @@
+See <https://gcc.gnu.org/ml/gcc-patches/2015-08/msg00375.html> for details.
+
 diff --git a/gcc/cp/cfns.gperf b/gcc/cp/cfns.gperf
 index 68acd3d..953262f 100644
 --- a/gcc/cp/cfns.gperf
